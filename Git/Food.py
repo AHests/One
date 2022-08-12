@@ -68,3 +68,4 @@ print(30000 == s_first)  # True
 print(s_first == 25000)  # False
 print(100000 < s_first)  # False
 print(100 < s_first)  # True
+print()
