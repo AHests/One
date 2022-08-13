@@ -43,14 +43,6 @@
 """
 
 
-
-
-
-
-
-
-
-
 class File:
     def __init__(self, name, in_trash=False, is_deleted=False):
         self.name = name
@@ -86,19 +78,16 @@ class File:
             print(f"Записали значение {content} в файл {self.name}")
 
 
-
-
 class Trash:
     content = []
 
     @staticmethod
     def add(self):
-        if not isinstance(self,File):
+        if not isinstance(self, File):
             print(f"В корзину добавлять можно только файл")
         else:
             Trash.content.append(self)
-            self.in_trash=True
-
+            self.in_trash = True
 
     @staticmethod
     def clear():
@@ -108,9 +97,6 @@ class Trash:
         Trash.content.clear()
         print("Корзина пуста")
 
-
-
-
     @staticmethod
     def restore():
         print(f"Восстанавливаем файлы из корзины")
@@ -118,6 +104,7 @@ class Trash:
             File.restore_from_trash(files)
         Trash.content.clear()
         print("Корзина пуста")
+
 
 f1 = File('puppies.jpg')
 print(f1.__dict__)  # {'name': 'puppies.jpg', 'in_trash': False, 'is_deleted': False}
@@ -130,15 +117,14 @@ f2.write('hello')  # Записали значение hello в файл cat.jpg
 f2.remove()  # Файл cat.jpg был удален
 f2.write('world')  # ErrorWriteFileDeleted(cat.jpg)
 
-
 f1 = File('puppies.jpg')
 f2 = File('cat.jpg')
 passwords = File('pass.txt')
 
-f1.read() # Прочитали все содержимое файла puppies.jpg
+f1.read()  # Прочитали все содержимое файла puppies.jpg
 Trash.add(f1)
-f1.read() # ErrorReadFileTrashed(puppies.jpg)
+f1.read()  # ErrorReadFileTrashed(puppies.jpg)
 
 Trash.add(f2)
 Trash.add(passwords)
-Trash.clear() #
+Trash.clear()  #
